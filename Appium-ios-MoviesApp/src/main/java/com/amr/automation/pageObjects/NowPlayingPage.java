@@ -7,11 +7,11 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class NowPlaying extends IOSActions {
+public class NowPlayingPage extends IOSActions {
 
     public IOSDriver driver;
 
-    public NowPlaying(IOSDriver driver) {
+    public NowPlayingPage(IOSDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver),this);
