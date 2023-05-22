@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class IOSActions {
 
-    IOSDriver driver;
+    public IOSDriver driver;
 
     public IOSActions(IOSDriver driver) {
         this.driver = driver;

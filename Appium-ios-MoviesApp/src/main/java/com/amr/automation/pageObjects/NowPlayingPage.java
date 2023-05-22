@@ -7,6 +7,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.time.Duration;
+
 public class NowPlayingPage extends IOSActions {
 
     public IOSDriver driver;
@@ -14,7 +16,7 @@ public class NowPlayingPage extends IOSActions {
     public NowPlayingPage(IOSDriver driver) {
         super(driver);
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     // Locators
@@ -31,8 +33,9 @@ public class NowPlayingPage extends IOSActions {
     private WebElement topRatedTab;
 
 
-    public void goToNowPlayingTab() {
-        nowPlayingTab.click();
+    public NowPlayingPage goToNowPlayingTab() {
+
+        return this;
     }
 
     public void goToPopularTab() {
