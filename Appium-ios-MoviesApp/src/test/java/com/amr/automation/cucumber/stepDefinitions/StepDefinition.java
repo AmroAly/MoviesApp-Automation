@@ -57,6 +57,20 @@ public class StepDefinition extends BaseTest {
         searchPage.searchForMovie(movie);
     }
 
+    @When("User tab the first movie")
+    public void user_tab_the_first_movie() {
+        nowPlayingPage.viewFirstMovie();
+    }
+
+    /*
+     * isn't implemented as the current version of app
+     * doesn't support viewing a single movie in a single view
+     */
+    @Then("Movie is displayed in a new page")
+    public void movie_is_displayed_ina_a_new_page()  {
+        throw new io.cucumber.java.PendingException();
+    }
+
     @After
     public void cleanUp() {
         tearDown();

@@ -5,9 +5,12 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NowPlayingPage extends IOSActions {
 
@@ -34,6 +37,9 @@ public class NowPlayingPage extends IOSActions {
 
     @iOSXCUITFindBy(accessibility="Search")
     private WebElement searchButton;
+
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText)[4]")
+    private WebElement firstMovie;
 
 
     public NowPlayingPage goToNowPlayingTab() {
@@ -85,5 +91,9 @@ public class NowPlayingPage extends IOSActions {
     public SearchPage gotoPageSearch() {
         searchButton.click();
         return new SearchPage(driver);
+    }
+
+    public void viewFirstMovie() {
+        // to be implemented
     }
 }
