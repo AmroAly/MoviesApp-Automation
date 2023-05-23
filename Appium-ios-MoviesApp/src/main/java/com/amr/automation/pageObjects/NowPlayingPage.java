@@ -49,4 +49,33 @@ public class NowPlayingPage extends IOSActions {
     public void goToTopRatedTab() {
         topRatedTab.click();
     }
+
+    public boolean verifyPageIsDisplayed(String pageTitle) {
+        switch (pageTitle) {
+            case "Popular":
+                return popularTab.isSelected();
+            case "Upcoming":
+                return upcomingTab.isSelected();
+            case "Top Rated":
+                return topRatedTab.isSelected();
+            default:
+                return nowPlayingTab.isSelected();
+        }
+    }
+
+    public void gotoPage(String tabTitle) {
+        switch (tabTitle) {
+            case "Popular":
+                goToPopularTab();
+                break;
+            case "Upcoming":
+                goToUpcomingTab();
+                break;
+            case "Top Rated":
+                goToTopRatedTab();
+                break;
+            default:
+                goToNowPlayingTab();
+        }
+    }
 }

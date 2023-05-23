@@ -23,4 +23,8 @@ public class IOSActions {
 
         driver.executeScript("mobile:touchAndHold", params);
     }
+
+    public boolean verifyPageIsDisplayed(WebElement el, String pageTitle) {
+        return el.getAttribute("label").equals(pageTitle);
+    }
 }
