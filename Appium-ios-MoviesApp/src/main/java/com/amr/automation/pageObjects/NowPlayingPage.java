@@ -32,6 +32,9 @@ public class NowPlayingPage extends IOSActions {
     @iOSXCUITFindBy(accessibility="Top Rated")
     private WebElement topRatedTab;
 
+    @iOSXCUITFindBy(accessibility="Search")
+    private WebElement searchButton;
+
 
     public NowPlayingPage goToNowPlayingTab() {
 
@@ -77,5 +80,10 @@ public class NowPlayingPage extends IOSActions {
             default:
                 goToNowPlayingTab();
         }
+    }
+
+    public SearchPage gotoPageSearch() {
+        searchButton.click();
+        return new SearchPage(driver);
     }
 }
