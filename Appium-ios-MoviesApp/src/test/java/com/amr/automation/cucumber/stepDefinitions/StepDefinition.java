@@ -4,11 +4,15 @@ import com.amr.automation.BaseTest;
 import com.amr.automation.pageObjects.NowPlayingPage;
 import com.amr.automation.pageObjects.SearchPage;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.OutputType;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 
 import java.net.MalformedURLException;
 
@@ -52,8 +56,8 @@ public class StepDefinition extends BaseTest {
         Assert.assertTrue(searchPage.elementExists());
     }
 
-    @And("^Search for move (.+)$")
-    public void search_for_move(String movie) {
+    @And("^Search for movie (.+)$")
+    public void search_for_movie(String movie) {
         searchPage.searchForMovie(movie);
     }
 
@@ -67,13 +71,24 @@ public class StepDefinition extends BaseTest {
      * doesn't support viewing a single movie in a single view
      */
     @Then("Movie is displayed in a new page")
-    public void movie_is_displayed_ina_a_new_page()  {
-        throw new io.cucumber.java.PendingException();
+    public void movie_is_displayed_in_a_new_page()  {
+        Assert.fail("Movie can be viewed in a new page");
     }
 
-    @After
+    @After(order = 1)
     public void cleanUp() {
         tearDown();
+    }
+
+    @After(order = 2)
+    public void addScreenshot(Scenario scenario) throws MalformedURLException {
+        //validate if scenario has failed
+        if(scenario.isFailed()) {
+            driver = initializeDriver();
+            final byte[] screenshot = driver.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "image");
+        }
+
     }
 
 }

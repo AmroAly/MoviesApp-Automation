@@ -5,12 +5,8 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 
 public class NowPlayingPage extends IOSActions {
 
@@ -42,9 +38,8 @@ public class NowPlayingPage extends IOSActions {
     private WebElement firstMovie;
 
 
-    public NowPlayingPage goToNowPlayingTab() {
-
-        return this;
+    public void goToNowPlayingTab() {
+        nowPlayingTab.click();
     }
 
     public void goToPopularTab() {
